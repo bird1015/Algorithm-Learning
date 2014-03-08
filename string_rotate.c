@@ -87,7 +87,7 @@ void Test_rotate()
 		printf ("TEST CASE: FAILED! \n" );
 	}
 	
-    if ( 0 == strcmp( test [i ].dstStr , rotate (test [i ].srcStr , test [i ].len , test [i ].m )))
+        if ( 0 == strcmp( test [i ].dstStr , rotate (test [i ].srcStr , test [i ].len , test [i ].m )))
 	{
 		printf (" TEST CASE %d: PASS! \t" ,i );
 		printf ("srcStr = %s \n" , test [i ++]. srcStr);
