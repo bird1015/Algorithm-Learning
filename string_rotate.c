@@ -13,11 +13,11 @@
 
 static inline void swap( char *a , char *b )
 {
-		char temp;
+	char temp;
 		
-		temp = *a ;
-		* a = * b;
-		* b = temp ;
+	temp = *a ;
+	* a = * b;
+	* b = temp ;
 }
 
 char *rotate ( char * str , int len , int m)
@@ -48,8 +48,8 @@ char *rotate ( char * str , int len , int m)
 		
 		while ( p > i )
 		{
-				swap (&str [p ], &str[ p - 1 ]);
-				p--;
+			swap (&str [p ], &str[ p - 1 ]);
+			p--;
 		}
 		
 		i++;
