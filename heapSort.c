@@ -18,7 +18,7 @@ void heaplify(int *arr, int len, int pos)
 	}
 	if( right < len && arr[right] > arr[max])
 	{
-			max = right;
+		max = right;
 	}
 	
 	if( max != pos)
