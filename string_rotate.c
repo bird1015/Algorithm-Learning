@@ -13,89 +13,89 @@
 
 static inline void swap( char *a , char *b )
 {
-       char temp;
-
-       temp = *a ;
-       * a = * b;
-       * b = temp ;
+		char temp;
+		
+		temp = *a ;
+		* a = * b;
+		* b = temp ;
 }
 
 char *rotate ( char * str , int len , int m)
 {
-       int i, j, k, r;
+	int i, j, k, r;
+	
+	k = ( len - m ) - len % m ;
+	
+	i = 0 ;
+	j = m;
+	r = len % m ;
 
-       k = ( len - m ) - len % m ;
+	DBG_MSG("k = %d \n", k);
 
-       i = 0 ;
-       j = m;
-       r = len % m ;
+	while (k --)
+	{
+		swap (&str [ i ], &str[ j ]);
+		
+		i++;
+		j++;
+	}
 
-		DBG_MSG("k = %d \n", k);
-
-       while (k --)
-      {
-             swap (&str [ i ], &str[ j ]);
-
-             i++;
-             j++;
-      }
-
-       DBG_MSG("r = %d \n", r);
-	   
-       while (r --)
-      {
-             int p = j;
-
-             while ( p > i )
-            {
-                   swap (&str [p ], &str[ p - 1 ]);
-                   p--;
-            }
-
-             i++;
-             j++;
-      }
+	DBG_MSG("r = %d \n", r);
+	
+	while (r --)
+	{
+		int p = j;
+		
+		while ( p > i )
+		{
+				swap (&str [p ], &str[ p - 1 ]);
+				p--;
+		}
+		
+		i++;
+		j++;
+	}
       
-    return str;
+	return str;
 }
 
 void Test_rotate()
 {
-       int i = 0 ;
-	   
-	   	printf("%s: \n",__FUNCTION__);
-
-       struct T
-       {
-             char srcStr[ MAXLEN ];
-             char dstStr[ MAXLEN ];
-             int len;
-             int m;
-      } test [] =
-      {
-            { "abcdefghijk" , "defghijkabc" , 11, 3 },
-            { "abcdefghijk" ,"efghijkabcd" , 11, 4 }
-      };
-
-       if ( 0 == strcmp( test [i ].dstStr , rotate (test [i ].srcStr , test [i ].len , test [i ].m )))
-      {
-             printf (" TEST CASE %d: PASS! \t" ,i );
-             printf ("srcStr = %s \n" , test [i ++]. srcStr);
-      }
-       else
-       {
-             printf ("TEST CASE: FAILED! \n" );
-      }
-
+	int i = 0 ;
+	
+	printf("%s: \n",__FUNCTION__);
+	
+	struct T
+	{
+		char srcStr[ MAXLEN ];
+		char dstStr[ MAXLEN ];
+		int len;
+		int m;
+	} 	test [] =
+	{
+		{ "abcdefghijk" , "defghijkabc" , 11, 3 },
+		{ "abcdefghijk" ,"efghijkabcd" , 11, 4 }
+	};
+	
+	if ( 0 == strcmp( test [i ].dstStr , rotate (test [i ].srcStr , test [i ].len , test [i ].m )))
+	{
+		printf (" TEST CASE %d: PASS! \t" ,i );
+		printf ("srcStr = %s \n" , test [i ++]. srcStr);
+	}
+	else
+	{
+		printf ("TEST CASE: FAILED! \n" );
+	}
+	
     if ( 0 == strcmp( test [i ].dstStr , rotate (test [i ].srcStr , test [i ].len , test [i ].m )))
-      {
-             printf (" TEST CASE %d: PASS! \t" ,i );
-             printf ("srcStr = %s \n" , test [i ++]. srcStr);
-      }
-       else
-       {
-             printf ("TEST CASE: FAILED! \n" );
-      }
+	{
+		printf (" TEST CASE %d: PASS! \t" ,i );
+		printf ("srcStr = %s \n" , test [i ++]. srcStr);
+	}
+	else
+	{
+		printf ("TEST CASE: FAILED! \n" );
+	}
 
 }
 
@@ -149,58 +149,56 @@ char *rotate2(char *str, int len , int m)
 
 void Test_rotate2()
 {
-       int i = 0 ;
-	   
-	   	printf("%s: \n",__FUNCTION__);
+		int i = 0 ;
+		
+		printf("%s: \n",__FUNCTION__);
 
-       struct T
-       {
-             char srcStr[ MAXLEN ];
-             char dstStr[ MAXLEN ];
-             int len;
-             int m;
-      } test [] =
-      {
-            { "abcdefghijk" , "defghijkabc" , 11, 3 },
-            { "abcdefghijk" ,"efghijkabcd" , 11, 4 }
-      };
+		struct T
+		{
+			char srcStr[ MAXLEN ];
+			char dstStr[ MAXLEN ];
+			int len;
+			int m;
+		} 	test [] =
+		{
+			{ "abcdefghijk" , "defghijkabc" , 11, 3 },
+			{ "abcdefghijk" ,"efghijkabcd" , 11, 4 }
+		};
 
-       if ( 0 == strcmp( test [i ].dstStr , rotate2 (test [i ].srcStr , test [i ].len , test [i ].m )))
-      {
-             printf (" TEST CASE %d: PASS! \t" ,i );
-             printf ("srcStr = %s \n" , test [i ++]. srcStr);
-      }
-       else
-       {
-             printf ("TEST CASE: FAILED! \n" );
-			 printf ("srcStr = %s \n" , test [i ++]. srcStr);
-      }
+		if ( 0 == strcmp( test [i ].dstStr , rotate2 (test [i ].srcStr , test [i ].len , test [i ].m )))
+		{
+			printf (" TEST CASE %d: PASS! \t" ,i );
+			printf ("srcStr = %s \n" , test [i ++]. srcStr);
+		}
+		else
+		{
+			printf ("TEST CASE: FAILED! \n" );
+			printf ("srcStr = %s \n" , test [i ++]. srcStr);
+		}
 
-    if ( 0 == strcmp( test [i ].dstStr , rotate2 (test [i ].srcStr , test [i ].len , test [i ].m )))
-      {
-             printf (" TEST CASE %d: PASS! \t" ,i );
-             printf ("srcStr = %s \n" , test [i ++]. srcStr);
-			 
-      }
-       else
-       {
-             printf ("TEST CASE: FAILED! \n" );
-			 printf ("srcStr = %s \n" , test [i ++]. srcStr);
-      }
+		if ( 0 == strcmp( test [i ].dstStr , rotate2 (test [i ].srcStr , test [i ].len , test [i ].m )))
+		{
+			printf (" TEST CASE %d: PASS! \t" ,i );
+			printf ("srcStr = %s \n" , test [i ++]. srcStr);
+			
+		}
+		else
+		{
+			printf ("TEST CASE: FAILED! \n" );
+			printf ("srcStr = %s \n" , test [i ++]. srcStr);
+		}
 
 }
-
-
 
 int main()
 {
   
-	 Test_rotate();
+	Test_rotate();
 	
-     Test_rotate2 ();
+	Test_rotate2 ();
 
 
-       return 0;
+	return 0;
 }
 
 
